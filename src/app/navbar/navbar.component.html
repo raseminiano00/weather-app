@@ -6,8 +6,11 @@
         <p>Weather Forecast</p>
       </div>
 
-      <div>
-        <button class="border-2 border-solid rounded-md px-3 py-2">
+      <div *ngIf="auth.isAuthenticated$ | async">
+        <button
+          class="border-2 border-solid rounded-md px-3 py-2"
+          (click)="onLogoutClick()"
+        >
           <p>Logout</p>
         </button>
       </div>
