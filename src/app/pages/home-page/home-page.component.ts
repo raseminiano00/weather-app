@@ -36,22 +36,24 @@ export class HomePageComponent {
       return;
     }
 
-    this.weatherForecastService.getWeatherForecastForToday().subscribe({
-      next: (response) => {
-        if (response) {
-          this.storageMap.set('cityResponse', response).subscribe(() => {
-            window.location.replace('weather');
-          });
-        }
-      },
-      error: () => {
-        this.errorState = {
-          hasError: true,
-          message:
-            'Sorry, an error occurred while fetching data from the API. Please try again later.',
-        };
-      },
-    });
+    this.weatherForecastService
+      .getWeatherForecastForToday(this.inputCityText)
+      .subscribe({
+        next: (response) => {
+          if (response) {
+            this.storageMap.set('cityResponse', response).subscribe(() => {
+              window.location.replace('weather');
+            });
+          }
+        },
+        error: () => {
+          this.errorState = {
+            hasError: true,
+            message:
+              'Sorry, an error occurred while fetching data from the API. Please try again later.',
+          };
+        },
+      });
   }
 
   validateInput() {
@@ -60,7 +62,7 @@ export class HomePageComponent {
       message: '',
     };
 
-    if(!this.inputCityText) {
+    if (!this.inputCityText) {
       this.errorState = {
         hasError: true,
         message: 'Please input city',
