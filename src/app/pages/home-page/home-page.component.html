@@ -1,24 +1,30 @@
 <div *ngIf="name">
-  <div class="w-2/6 mx-auto">
-    <div class="text-center mt-10">
-      <p class="text-sm mb-5">
-        {{ name }}
-      </p>
-      <a [href]="githubAccountUrl" class="text-center text-sm mb-5">
-        {{ githubAccountUrl }}
-      </a>
+  <div class="w-9/12 mx-auto lg:w-2/6">
+    <div class="invisible sm:visible">
+      <div class="mb-0 mt-0 text-center sm:mt-10 sm:mb-10">
+        <p class="text-sm mb-5">
+          {{ name }}
+        </p>
+        <a [href]="githubAccountUrl" class="text-center text-sm mb-5">
+          {{ githubAccountUrl }}
+        </a>
+      </div>
     </div>
 
-    <div class="relative mt-16">
+    <div class="relative">
       <input
         type="text"
         placeholder="City"
-        class="w-full py-2 pl-10 pr-4 border rounded-lg focus:outline-none focus:ring focus:border-blue-300"
+        class="w-full py-2 pl-10 pr-4 border rounded-lg focus:outline-none focus:ring focus:border-blue-300
+               {{ errorState.hasError ? 'border-red-500' : '' }}"
+        [(ngModel)]="inputCityText"
       />
       <div class="absolute inset-y-0 left-0 flex items-center pl-3">
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
     </div>
+    <!-- Error Message -->
+    <p class="text-red-500 text-sm mt-1 ml-1">{{ errorState.message }}</p>
 
     <div class="w-2/6 mx-auto mt-5">
       <button

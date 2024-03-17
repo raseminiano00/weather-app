@@ -1,1 +1,52 @@
-<p>weather-forecast-page works!</p>
+<div *ngIf="weatherForecast" class="pt-10">
+  <div class="flex justify-center">
+    <table class="table-auto">
+      <thead>
+        <tr>
+          <th
+            class="px-4 py-2 bg-gray-200 text-left hidden sm:visible"
+            colspan="2"
+          >
+            Date
+          </th>
+          <th
+            class="px-4 py-2 bg-gray-200 text-left md:visible"
+            colspan="6"
+          >
+            Date
+          </th>
+        </tr>
+        <tr>
+          <th class="px-4 py-2 bg-gray-300">(mm/dd/yyyy)</th>
+          <th class="px-4 py-2 bg-gray-300">Temp(F)</th>
+          <!-- Only display these columns on larger screens (sm and up) -->
+          <th class="hidden sm:table-cell px-4 py-2 bg-gray-300">
+            Description
+          </th>
+          <th class="hidden sm:table-cell px-4 py-2 bg-gray-300">Main</th>
+          <th class="hidden sm:table-cell px-4 py-2 bg-gray-300">Pressure</th>
+          <th class="hidden sm:table-cell px-4 py-2 bg-gray-300">Humidity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border px-4 py-2">{{ weatherForecastTableData.date }}</td>
+          <td class="border px-4 py-2">{{ weatherForecastTableData.temp }}</td>
+          <!-- Only display these columns on larger screens (sm and up) -->
+          <td class="hidden sm:table-cell border px-4 py-2">
+            {{ weatherForecastTableData.description }}
+          </td>
+          <td class="hidden sm:table-cell border px-4 py-2">
+            {{ weatherForecastTableData.main }}
+          </td>
+          <td class="hidden sm:table-cell border px-4 py-2">
+            {{ weatherForecastTableData.pressure }}
+          </td>
+          <td class="hidden sm:table-cell border px-4 py-2">
+            {{ weatherForecastTableData.humidity }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
